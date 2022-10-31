@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "author": "Dr. T",
   "description": "",
-  "author": "YOUR NAME HERE",
   "main": "public/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +10,6 @@
     "build": "webpack --mode production"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^6.2.0",
