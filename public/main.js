@@ -6,7 +6,7 @@ import {
   getRequest, postRequest, patchRequest, deleteRequest
 } from '../api/promises';
 
-const init = () => {
+const htmlStructure = () => {
   document.querySelector('#app').innerHTML = `
     <h1>TESTING PROMISES</h1>
     <h2>Open your dev tools</h2><br />
@@ -15,24 +15,31 @@ const init = () => {
     <button class="btn btn-success" id="patch-name">PATCH YOUR NAME</button>
     <button class="btn btn-danger" id="delete-name">DELETE YOUR NAME</button>
   `;
+};
 
+const events = () => {
   document.querySelector('#get-joke').addEventListener('click', () => {
     getRequest().then(console.warn);
   });
   document.querySelector('#post-name').addEventListener('click', () => {
     // update this object with your name
-    const payload = { name: 'Dr. T' };
+    const payload = { name: 'YOUR NICKNAME' };
     postRequest(payload).then(console.warn);
   });
   document.querySelector('#patch-name').addEventListener('click', () => {
-    // update this object with your name and firebaseKey
-    const payload = { name: 'Dr. Teresa', firebaseKey: '-NFjvhLY0Yj_UVPctmP2' };
+    // update this object with your name and firebaseKey that was logged in the console when you created your name in the database
+    const payload = { name: 'YOUR FULL NAME', firebaseKey: '' };
     patchRequest(payload).then(console.warn);
   });
   document.querySelector('#delete-name').addEventListener('click', () => {
-    const firebaseKey = '-NFjvhLY0Yj_UVPctmP2';
+    const firebaseKey = '';
     deleteRequest(firebaseKey).then(console.warn);
   });
 };
 
-init();
+const startApp = () => {
+  htmlStructure();
+  events(); // ALWAYS LAST
+};
+
+startApp();
