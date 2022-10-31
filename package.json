@@ -1,6 +1,7 @@
 {
-  "name": "webpack-5.0-template",
+  "name": "promises-example",
   "version": "1.0.0",
+  "author": "Dr. T",
   "description": "",
   "main": "public/main.js",
   "scripts": {

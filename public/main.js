@@ -1,25 +1,38 @@
 // USE WITH FIREBASE AUTH
-// import ViewDirectorBasedOnUserAuthStatus from './helpers/viewDirector';
+// import ViewDirectorBasedOnUserAuthStatus from './utils/viewDirector';
 import 'bootstrap'; // import bootstrap elements and js
 import '../styles/main.scss';
+import {
+  getRequest, postRequest, patchRequest, deleteRequest
+} from '../api/promises';
 
 const init = () => {
   document.querySelector('#app').innerHTML = `
-    <h1>HELLO! You are up and running!</h1>
-    <small>Open your dev tools</small><br />
-    <button class="btn btn-danger" id="click-me">Click ME!</button><br />
-    <hr />
-    <h2>These are font awesome icons:</h2>
-    <i class="fas fa-user fa-4x"></i> <i class="fab fa-github-square fa-5x"></i>
+    <h1>TESTING PROMISES</h1>
+    <h2>Open your dev tools</h2><br />
+    <button class="btn btn-warning" id="get-joke">GET JOKE</button>
+    <button class="btn btn-info" id="post-name">POST YOUR NAME</button>
+    <button class="btn btn-success" id="patch-name">PATCH YOUR NAME</button>
+    <button class="btn btn-danger" id="delete-name">DELETE YOUR NAME</button>
   `;
-  console.warn('YOU ARE UP AND RUNNING!');
 
-  document
-    .querySelector('#click-me')
-    .addEventListener('click', () => console.warn('You clicked that button!'));
-
-  // USE WITH FIREBASE AUTH
-  // ViewDirectorBasedOnUserAuthStatus();
+  document.querySelector('#get-joke').addEventListener('click', () => {
+    getRequest().then(console.warn);
+  });
+  document.querySelector('#post-name').addEventListener('click', () => {
+    // update this object with your name
+    const payload = { name: 'Dr. T' };
+    postRequest(payload).then(console.warn);
+  });
+  document.querySelector('#patch-name').addEventListener('click', () => {
+    // update this object with your name and firebaseKey
+    const payload = { name: 'Dr. Teresa', firebaseKey: '-NFjvhLY0Yj_UVPctmP2' };
+    patchRequest(payload).then(console.warn);
+  });
+  document.querySelector('#delete-name').addEventListener('click', () => {
+    const firebaseKey = '-NFjvhLY0Yj_UVPctmP2';
+    deleteRequest(firebaseKey).then(console.warn);
+  });
 };
 
 init();
